@@ -1,19 +1,19 @@
 // node modules
 const inquirer = require('inquirer');
 const fs = require('fs');
-const markdown = require('.assets/generateMarkdown');
+const generateMarkdown = require('./assets/generateMarkdown');
 
 // Generate questions
 inquirer.prompt([
     {
         type:'input',
-        name:'description',
+        name:'title',
         message:'What is title of your project?'
     },
 
     {
         type:'input',
-        name:'description',
+        name:'questions',
         message:'What is your email address?'
     },
 
@@ -25,21 +25,27 @@ inquirer.prompt([
 
     {
         type:'input',
-        name:'description',
+        name:'license',
         message:'What license did you use?',
         choices:['MIT', 'Apache', 'GNU', 'ISC', 'N/A'],
     },
 
     {
         type:'input',
-        name:'description',
+        name:'questions',
         message:'What is your Github username?'
     },
 
     {
         type:'input',
-        name:'description',
+        name:'usage',
         message:'How would user use this application?'
+    },
+
+    {
+        type:'input',
+        name:'installation',
+        message:'How to install this app?'
     },
 ]).then((response) => {
     console.log(response);

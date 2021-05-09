@@ -14,7 +14,7 @@ if(license === 'MIT') {
 }
 
 // licenses links
-function renderLinkLicense(license) {
+function renderLicenseLinks(license) {
     if(license === 'MIT') {
         return `[MIT License](https://opensource.org/licenses/MIT)`
     } else if(license === 'Apache') {
@@ -28,7 +28,7 @@ function renderLinkLicense(license) {
 }
 
 // license permissions
-function renderSections(license) {
+function renderSectionsLinks(license) {
     if(license === 'MIT') {
         return `A short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code.`
     } else if(license === 'Apache') {
@@ -62,7 +62,8 @@ function generateMarkdown(data) {
     ${data.usage}
 
     ## License
-    ${data.license}
+    ${renderLicenseLinks(data.license)}
+    ${renderSectionsLinks(data.license)}
 
     ## Questions
     ${data.questions}

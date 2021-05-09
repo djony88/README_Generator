@@ -1,7 +1,9 @@
+// node modules
 const inquirer = require('inquirer');
 const fs = require('fs');
 const markdown = require('.assets/generateMarkdown');
 
+// Generate questions
 inquirer.prompt([
     {
         type:'input',
@@ -24,7 +26,8 @@ inquirer.prompt([
     {
         type:'input',
         name:'description',
-        message:'What license did you use?'
+        message:'What license did you use?',
+        choices:['MIT', 'Apache', 'GNU', 'ISC', 'N/A'],
     },
 
     {
@@ -38,4 +41,8 @@ inquirer.prompt([
         name:'description',
         message:'How would user use this application?'
     },
-]);
+]).then((response) => {
+    console.log(response);
+    fs.writeFile('UserREADME.md', generateMarkdown(response), (err) => err ? console.log(err): console.log('Succses'));
+})
+

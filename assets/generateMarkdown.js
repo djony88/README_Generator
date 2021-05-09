@@ -18,9 +18,9 @@ function renderLinkLicense(license) {
     if(license === 'MIT') {
         return `[MIT License](https://opensource.org/licenses/MIT)`
     } else if(license === 'Apache') {
-        return `[Apache License](http://www.apache.org/licenses/)`
+        return `[Apache License](https://www.apache.org/licenses/LICENSE-2.0)`
     } else if(license === 'GNU') {
-        return `[GNU License](https://www.gnu.org/licenses/gpl-3.0-standalone.html)`
+        return `[GNU License](https://www.gnu.org/licenses/gpl-3.0.en.html)`
     } else if(license === 'ISC') {
         return '[ISC License](https://www.isc.org/licenses/)'
     } else if(license === 'none')
@@ -42,3 +42,31 @@ function renderSections(license) {
       }
 }
 
+function generateMarkdown(data) {
+    return `# ${data.title}
+    ${renderLicenseBadge(data.license)}
+    ## Table of Contents
+    [Description](#description)
+    [Installation](#installation)
+    [Usage](#usage)
+    [License](#license)
+    [Questions](#questions)
+
+    ## Description
+    ${data.description}
+
+    ## Installation
+    ${data.installation}
+
+    ## Usage
+    ${data.usage}
+
+    ## License
+    ${data.license}
+
+    ## Questions
+    ${data.questions}
+    `;
+}
+
+module.exports = generateMarkdown;
